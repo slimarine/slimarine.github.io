@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="SLIM Lab - Sciences behind Lightweight Innovations for Marine applications" />
+    <meta name="description" content="SLIM Lab - Science behind Lightweight Innovations for Maritime applications" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -47,39 +47,6 @@
             margin: 15px 0;
             color: var(--unc-blue);
             text-transform: uppercase;
-            text-shadow: 
-                2px 2px 0 #2c3e50,
-                4px 4px 0 rgba(44, 62, 80, 0.8),
-                6px 6px 0 rgba(44, 62, 80, 0.6),
-                8px 8px 0 rgba(44, 62, 80, 0.4);
-            position: relative;
-            animation: glitch 5s infinite;
-        }
-
-        .lab-title::before,
-        .lab-title::after {
-            content: 'SLIM LAB';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .lab-title::before {
-            color: #ff00ff;
-            animation: glitch-effect 3s infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-            transform: translate(-2px, -2px);
-            opacity: 0.75;
-        }
-
-        .lab-title::after {
-            color: #00ffff;
-            animation: glitch-effect 2s infinite;
-            clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
-            transform: translate(2px, 2px);
-            opacity: 0.75;
         }
 
         .lab-subtitle {
@@ -245,24 +212,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            2% { transform: translate(-2px, 2px); }
-            4% { transform: translate(2px, -2px); }
-            6% { transform: translate(0); }
-            98% { transform: translate(0); }
-            100% { transform: translate(0); }
-        }
-
-        @keyframes glitch-effect {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
         }
 
         @media (max-width: 768px) {
