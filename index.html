@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="description" content="SLIM Lab - Science behind Lightweight Innovations for Maritime applications" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --unc-blue: #4B9CD3;
             --white: #ffffff;
             --light-blue: #EDF3F8;
+            --nature-yellow: #FFB000;
+            --nature-magenta: #DC267F;
+            --nature-blue: #648FFF;
+            --nature-purple: #785EF0;
         }
         
         html {
@@ -47,14 +51,25 @@
             object-fit: contain;
         }
 
-        .logo-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5em;
-            font-weight: bold;
-            letter-spacing: 4px;
+        .lab-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            font-weight: 700;
+            letter-spacing: 8px;
             margin: 15px 0;
             color: var(--unc-blue);
+            text-transform: uppercase;
         }
+
+        .lab-subtitle {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .highlight-s { color: var(--nature-yellow); }
+        .highlight-l { color: var(--nature-magenta); }
+        .highlight-i { color: var(--nature-blue); }
+        .highlight-m { color: var(--nature-purple); }
 
         .nav-menu {
             position: sticky;
@@ -75,7 +90,8 @@
             padding: 5px 10px;
             transition: all 0.3s ease;
             display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9em;
         }
 
         .nav-menu a:hover {
@@ -118,14 +134,14 @@
         }
 
         h1 {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Orbitron', sans-serif;
             color: var(--unc-blue);
             margin: 20px 0;
             font-size: 2em;
         }
 
         h2 {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Orbitron', sans-serif;
             color: var(--unc-blue);
             border-bottom: 2px solid var(--unc-blue);
             padding-bottom: 10px;
@@ -178,6 +194,11 @@
             .header {
                 padding: 20px 10px;
             }
+
+            .lab-title {
+                font-size: 3em;
+                letter-spacing: 4px;
+            }
         }
     </style>
     <title>SLIM Lab - Dalian Maritime University</title>
@@ -187,8 +208,13 @@
         <div class="lab-icon">
             <img src="https://raw.githubusercontent.com/slimarine/slimarine.github.io/main/images/image_20241206084629.png" alt="SLIM Lab Icon">
         </div>
-        <h1>SLIM Lab</h1>
-        <p>Sciences behind Lightweight Innovations for Marine applications Laboratory</p>
+        <div class="lab-title">SLIM LAB</div>
+        <p class="lab-subtitle">
+            <span class="highlight-s">S</span>ciences behind 
+            <span class="highlight-l">L</span>ightweight 
+            <span class="highlight-i">I</span>nnovations for 
+            <span class="highlight-m">M</span>arine applications Laboratory
+        </p>
         <p>Dalian Maritime University ⚓️ | Dalian, China [39°, 121°]</p>
     </div>
 
