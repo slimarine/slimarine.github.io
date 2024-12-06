@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="SLIM Lab - Sciences behind Lightweight Innovations for Marine applications" />
+    <meta name="description" content="SLIM Lab - Science behind Lightweight Innovations for Maritime applications" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -141,6 +141,21 @@
             padding-left: 10px;
         }
 
+        .research-interests img {
+            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .research-interests img:hover {
+            transform: scale(1.02);
+        }
+
+        .publication-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
@@ -220,20 +235,25 @@
         <h2>Research Focus</h2>
         <ul class="research-interests">
             <li>🏗️ <strong>Fibrous Composites Additive Manufacturing:</strong> Developing complex geometries with high weight-to-strength ratio for on-site ship maintenance and spare parts supply</li>
+            <img src="https://pub.mdpi-res.com/polymers/polymers-14-04941/article_deploy/html/images/polymers-14-04941-ag.png?1669171835" alt="Fibrous Composites" style="width: 100%; margin: 15px 0; border-radius: 8px;">
+            
             <li>🐟 <strong>Marine-based Biomimetic Design:</strong> Creating natural metamaterials inspired by marine structures like cuttlebones</li>
+            <img src="https://ars.els-cdn.com/content/image/1-s2.0-S235249282301591X-ga1_lrg.jpg" alt="Biomimetic Design" style="width: 100%; margin: 15px 0; border-radius: 8px;">
+            
             <li>🚢 <strong>Large Area Additive Manufacturing:</strong> Advancing rapid fabrication techniques for marine structures</li>
+            <img src="https://www.mdpi.com/materials/materials-14-02596/article_deploy/html/images/materials-14-02596-g001.png" alt="Large Area AM" style="width: 100%; margin: 15px 0; border-radius: 8px;">
         </ul>
     </div>
 
     <div class="content-section" id="publications">
-        <h2>Publications & Academic Services</h2>
-        <p>Our team serves as reviewers for prestigious journals including:</p>
-        <ul>
-            <li>Additive Manufacturing Letter</li>
-            <li>Structural Engineering and Mechanics</li>
-            <li>Proceedings of the Royal Society A</li>
-            <li>Nonlinear Engineering</li>
-        </ul>
+        <h2>Publications</h2>
+        <ol class="publication-list" style="padding-left: 20px;">
+            <li>Wang Z, Zhou K, Xu P, et al. High-temperature aging and long-term mechanical properties of polyphenylene sulfide composites for marine use. Ships and Offshore Structures, 2024: 1-9.</li>
+            <li>Wang, Z, Luo C, Xie Z, et al. Three dimensional polymer composite flow simulation and associated fiber orientation prediction for large area extrusion deposition additive manufacturing. Polymer Composites, 2023, 44(10): 6720-6735. (Editor's Choice Article)</li>
+            <li>Wang Z, Smith D E, Jack D A. A statistical homogenization approach for incorporating fiber aspect ratio distribution in large area polymer composite deposition additive manufacturing property predictions. Additive Manufacturing, 2021, 43: 102006.</li>
+            <li>Wang Z, Smith D E. Finite element modelling of fully-coupled flow/fiber-orientation effects in polymer composite deposition additive manufacturing nozzle-extrudate flow. Composites Part B: Engineering, 2021, 219: 108811.</li>
+            <li>Wang Z, Smith D E. Numerical analysis on viscoelastic creep responses of aligned short fiber reinforced composites. Composite Structures, 2019, 229: 111394.</li>
+        </ol>
     </div>
 
     <div class="content-section" id="team">
