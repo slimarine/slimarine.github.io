@@ -1,148 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Lab - UNC Charlotte</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="SLIM Lab - Science behind Lightweight Innovations for Maritime applications" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --unc-blue: #0085CA;
-            --unc-green: #7A6E67;
-            --text-color: #333;
-            --background-light: #f5f5f5;
+            --unc-blue: #4B9CD3;
+            --white: #ffffff;
+            --light-blue: #EDF3F8;
+            --nature-yellow: #E69F00;
+            --nature-magenta: #CC0066;
+            --nature-blue: #0072B2;
+            --nature-purple: #663399;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+        
+        html {
+            scroll-behavior: smooth;
         }
-
+        
         body {
+            font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: var(--light-blue);
         }
 
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
+        }
+
+        .lab-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin: 15px 0;
+            color: var(--unc-blue);
+            text-transform: uppercase;
+        }
+
+        .lab-subtitle {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .highlight-s { color: var(--nature-yellow); font-weight: 700; }
+        .highlight-l { color: var(--nature-magenta); font-weight: 700; }
+        .highlight-i { color: var(--nature-blue); font-weight: 700; }
+        .highlight-m { color: var(--nature-purple); font-weight: 700; }
+
+        .nav-menu {
+            position: sticky;
             top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .logo-text {
-            font-size: 1.2rem;
-            color: var(--unc-blue);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--unc-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('path_to_your_hero_image.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 100;
+            background: var(--unc-blue);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 4px;
             text-align: center;
-            color: white;
-            padding-top: 60px;
+            box-shadow: 0 2px 5px rgba(75, 156, 211, 0.2);
         }
 
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
             display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--unc-blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9em;
         }
 
-        .cta-button:hover {
-            background-color: #006ca3;
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            transform: translateY(-2px);
         }
 
-        /* Content Sections */
         .content-section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 40px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in;
         }
 
-        .content-section h2 {
+        .content-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .content-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--unc-blue), #2c3e50);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .content-section:hover::after {
+            transform: scaleX(1);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
             color: var(--unc-blue);
-            margin-bottom: 2rem;
-            text-align: center;
+            margin: 20px 0;
+            font-size: 2em;
         }
 
-        /* Research Interests */
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--unc-blue);
+            border-bottom: 2px solid var(--unc-blue);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
         .research-interests {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            list-style: none;
+            padding: 0;
         }
 
         .research-item {
             display: flex;
             align-items: center;
             gap: 20px;
+            margin-bottom: 30px;
             padding: 15px;
             background: rgba(75, 156, 211, 0.05);
             border-radius: 8px;
@@ -181,81 +184,57 @@
             transform: scale(1.05);
         }
 
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .publication-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: justify;
         }
 
-        .team-member {
+        .footer {
             text-align: center;
+            padding: 20px;
+            background-color: var(--white);
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
         }
 
-        .team-member img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            object-fit: cover;
-        }
-
-        /* Publications */
-        .publications-list {
-            list-style: none;
-        }
-
-        .publication-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: var(--background-light);
-            border-radius: 5px;
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            padding: 2rem;
-            background-color: var(--background-light);
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .contact-card i {
-            font-size: 2rem;
+        a {
             color: var(--unc-blue);
-            margin-bottom: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--unc-blue);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+        a:hover {
+            color: #2c3e50;
         }
 
-        /* Responsive Design */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .nav-menu a {
+                display: block;
+                margin: 10px 0;
             }
 
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-                margin-top: 1rem;
+            body {
+                padding: 10px;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .content-section {
+                margin: 15px 10px;
+            }
+
+            .header {
+                padding: 20px 10px;
+            }
+
+            .lab-title {
+                font-size: 3em;
+                letter-spacing: 4px;
             }
 
             .research-item {
@@ -272,33 +251,32 @@
             }
         }
     </style>
+    <title>SLIM Lab - Dalian Maritime University</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="unc-charlotte-logo.png" alt="UNC Charlotte Logo">
-                <div class="logo-text">Research Laboratory</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#research">Research</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="header">
+        <div class="lab-title">SLIM LAB</div>
+        <p class="lab-subtitle">
+            <span class="highlight-s">S</span>ciences behind 
+            <span class="highlight-l">L</span>ightweight 
+            <span class="highlight-i">I</span>nnovations for 
+            <span class="highlight-m">M</span>arine applications Laboratory
+        </p>
+        <p>Dalian Maritime University ⚓️ | Dalian, China [39°, 121°]</p>
+    </div>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Advanced Manufacturing Research Lab</h1>
-            <p>Pushing the boundaries of manufacturing technology through innovative research and development</p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
-        </div>
-    </section>
+    <div class="nav-menu">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="content-section" id="about">
+        <h2>About Us</h2>
+        <p>Welcome to the SLIM Lab at Dalian Maritime University. We focus on advancing the science of lightweight materials and innovative manufacturing techniques for maritime applications. Our research combines cutting-edge technology with practical maritime industry needs.</p>
+    </div>
 
     <div class="content-section" id="research">
         <h2>Research Focus</h2>
@@ -329,52 +307,31 @@
         </div>
     </div>
 
-    <div class="content-section" id="team">
-        <h2>Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <img src="path_to_team_member1.jpg" alt="Team Member 1">
-                <h3>Dr. John Doe</h3>
-                <p>Principal Investigator</p>
-            </div>
-            <!-- Add more team members as needed -->
-        </div>
+    <div class="content-section" id="publications">
+        <h2>Publications</h2>
+        <ol class="publication-list" style="padding-left: 20px;">
+            <li>Wang Z, Zhou K, Xu P, et al. High-temperature aging and long-term mechanical properties of polyphenylene sulfide composites for marine use. Ships and Offshore Structures, 2024: 1-9.</li>
+            <li>Wang, Z, Luo C, Xie Z, et al. Three dimensional polymer composite flow simulation and associated fiber orientation prediction for large area extrusion deposition additive manufacturing. Polymer Composites, 2023, 44(10): 6720-6735. (Editor's Choice Article)</li>
+            <li>Wang Z, Smith D E, Jack D A. A statistical homogenization approach for incorporating fiber aspect ratio distribution in large area polymer composite deposition additive manufacturing property predictions. Additive Manufacturing, 2021, 43: 102006.</li>
+            <li>Wang Z, Smith D E. Finite element modelling of fully-coupled flow/fiber-orientation effects in polymer composite deposition additive manufacturing nozzle-extrudate flow. Composites Part B: Engineering, 2021, 219: 108811.</li>
+            <li>Wang Z, Smith D E. Numerical analysis on viscoelastic creep responses of aligned short fiber reinforced composites. Composite Structures, 2019, 229: 111394.</li>
+        </ol>
     </div>
 
-    <div class="content-section" id="publications">
-        <h2>Recent Publications</h2>
-        <ul class="publications-list">
-            <li class="publication-item">
-                <h3>Publication Title 1</h3>
-                <p>Authors, Journal Name, Year</p>
-            </li>
-            <!-- Add more publications as needed -->
-        </ul>
+    <div class="content-section" id="team">
+        <h2>Our Team</h2>
+        <h3>Principal Investigator</h3>
+        <p>Dr. Zhaogui Wang leads the SLIM Lab. With extensive experience in maritime engineering and materials science, he guides our research initiatives and collaborations. Visit his academic profile at <a href="https://zw-am.github.io" target="_blank">zw-am.github.io</a></p>
     </div>
 
     <div class="content-section" id="contact">
         <h2>Contact Us</h2>
-        <div class="contact-info">
-            <div class="contact-card">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Address</h3>
-                <p>9201 University City Blvd, Charlotte, NC 28223</p>
-            </div>
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>research@uncc.edu</p>
-            </div>
-            <div class="contact-card">
-                <i class="fas fa-phone"></i>
-                <h3>Phone</h3>
-                <p>(704) 687-8622</p>
-            </div>
-        </div>
+        <p>Follow our research and stay updated with our latest developments on <a href="https://www.researchgate.net/profile/Zhaogui-Wang" target="_blank">ResearchGate</a></p>
     </div>
 
-    <footer>
-        <p>&copy; 2024 UNC Charlotte Research Laboratory. All rights reserved.</p>
-    </footer>
+    <div class="footer">
+        <p>More updates coming soon!</p>
+        <p>© 2024 SLIM Lab - Dalian Maritime University</p>
+    </div>
 </body>
 </html>
