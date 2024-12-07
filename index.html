@@ -60,15 +60,32 @@
         .highlight-m { color: var(--nature-purple); font-weight: 700; }
 
         .nav-menu {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             background: var(--unc-blue);
             padding: 15px 0;
             margin-bottom: 30px;
-            border-radius: 4px;
+            border-radius: 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(75, 156, 211, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .nav-menu a {
@@ -215,13 +232,32 @@
         }
 
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                padding: 10px 0;
+            }
+
+            .nav-menu .nav-links {
+                display: none;
+                padding-top: 10px;
+            }
+
+            .nav-menu.active .nav-links {
+                display: block;
+            }
+
             .nav-menu a {
                 display: block;
-                margin: 10px 0;
+                margin: 5px 0;
+                padding: 8px 0;
             }
 
             body {
                 padding: 10px;
+                padding-top: 60px;
             }
 
             .content-section {
@@ -266,11 +302,14 @@
     </div>
 
     <div class="nav-menu">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
+        <button class="menu-toggle">☰</button>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
 
     <div class="content-section" id="about">
@@ -283,16 +322,16 @@
         <div class="research-interests">
             <div class="research-item">
                 <div class="research-text">
-                    <h3>🏗️ Fibrous Composites Additive Manufacturing</h3>
-                    <p>Developing complex geometries with high weight-to-strength ratio for on-site ship maintenance and spare parts supply</p>
+                    <h3>🏗️ Lightweight Design Strategies</h3>
+                    <p>Developing complex lightweight unit-cells with high weight-to-strength ratio</p>
                 </div>
-                <img src="https://pub.mdpi-res.com/polymers/polymers-14-04941/article_deploy/html/images/polymers-14-04941-ag.png?1669171835" alt="Fibrous Composites">
+                <img src="https://www.voxelmatters.com/wp-content/uploads/2018/12/image.imageformat.fullwidth.868004196-780x465.jpg.avif" alt="Ultra High-perform Lattices">
             </div>
             
             <div class="research-item">
                 <div class="research-text">
                     <h3>🐟 Marine-based Biomimetic Design</h3>
-                    <p>Creating natural metamaterials inspired by marine structures like cuttlebones</p>
+                    <p>Generating natural metamaterials inspired by marine structures like cuttlebones</p>
                 </div>
                 <img src="https://ars.els-cdn.com/content/image/1-s2.0-S235249282301591X-ga1_lrg.jpg" alt="Biomimetic Design">
             </div>
@@ -300,7 +339,7 @@
             <div class="research-item">
                 <div class="research-text">
                     <h3>🚢 Large Area Additive Manufacturing</h3>
-                    <p>Advancing rapid fabrication techniques for marine structures</p>
+                    <p>Exploring preferrable properties of fibrious composites made by Large Area Additive Manufacturing (LAAM)</p>
                 </div>
                 <img src="https://www.mdpi.com/materials/materials-14-02596/article_deploy/html/images/materials-14-02596-g001.png" alt="Large Area AM">
             </div>
@@ -333,5 +372,23 @@
         <p>More updates coming soon!</p>
         <p>© 2024 SLIM Lab - Dalian Maritime University</p>
     </div>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-menu')) {
+                document.querySelector('.nav-menu').classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
