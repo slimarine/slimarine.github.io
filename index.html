@@ -362,11 +362,21 @@
         <h3>Principal Investigator</h3>
         <p>Dr. Zhaogui Wang leads the SLIM Lab. With extensive experience in maritime engineering and materials science, he guides our research initiatives and collaborations. Visit his academic profile at <a href="https://zw-am.github.io" target="_blank">zw-am.github.io</a></p>
     </div>
-
+    
     <div class="content-section" id="contact">
-        <h2>Contact Us</h2>
-        <p>Follow our research and stay updated with our latest developments on <a href="https://www.researchgate.net/profile/Zhaogui-Wang" target="_blank">ResearchGate</a></p>
+        <h2>Research in Tracking</h2>
+        <button onclick="showPublications()">Click to Show Publications</button>
     </div>
+
+    <script>
+    function showPublications() {
+      // Generate the Google Scholar search URL
+      const searchUrl = `https://scholar.google.com/scholar?q=zhaogui+wang+dalian+maritime+university&hl=en&as_sdt=1,5&as_vis=1&oi=scholart`;
+    
+      // Open the search results in a new window
+      window.open(searchUrl, '_blank');
+    }
+    </script>
 
     <div class="footer">
         <p>More updates coming soon!</p>
