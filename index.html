@@ -378,6 +378,62 @@
     }
     </script>
 
+    <!-- Add this new section before the footer div -->
+    <div class="content-section" id="visitors">
+        <h2>Global Visitors</h2>
+        <canvas id="visitorMap" width="360" height="180"></canvas>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script>
+    // Simple world map visualization
+    const canvas = document.getElementById('visitorMap');
+    const ctx = canvas.getContext('2d');
+    
+    // Initialize empty map
+    function initMap() {
+        ctx.fillStyle = '#eee';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    // Add visitor point
+    function addVisitor(lat, lon) {
+        // Convert lat/lon to canvas coordinates
+        const x = Math.floor((lon + 180) * (canvas.width / 360));
+        const y = Math.floor((90 - lat) * (canvas.height / 180));
+        
+        ctx.fillStyle = 'rgba(75, 156, 211, 0.8)'; // Using your UNC blue
+        ctx.beginPath();
+        ctx.arc(x, y, 2, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    // Initialize map
+    initMap();
+    
+    // Get visitor's location from IP
+    fetch('https://api.ipapi.com/api/check?access_key=YOUR_API_KEY')
+        .then(response => response.json())
+        .then(data => {
+            addVisitor(data.latitude, data.longitude);
+            // Store visit in localStorage or your backend
+            storeVisit(data.latitude, data.longitude);
+        })
+        .catch(error => console.log('Error fetching location:', error));
+    
+    // Function to store visit (you'll need to implement this with your backend)
+    function storeVisit(lat, lon) {
+        // Simple localStorage example
+        const visits = JSON.parse(localStorage.getItem('visits') || '[]');
+        visits.push({lat, lon, timestamp: new Date().toISOString()});
+        localStorage.setItem('visits', JSON.stringify(visits));
+        
+        // Render all previous visits
+        visits.forEach(visit => addVisitor(visit.lat, visit.lon));
+    }
+    </script>
+
+    
     <div class="footer">
         <p>More updates coming soon!</p>
         <p>© 2024 SLIM Lab - Dalian Maritime University</p>
