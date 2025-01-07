@@ -380,98 +380,108 @@
 
     <div class="content-section" id="visitors">
     <h2>Global Visitors</h2>
-    <canvas id="visitorMap" width="360" height="180" style="border: 1px solid #ccc; width: 100%; max-width: 800px;"></canvas>
-    </div>
+    <canvas id="visitorMap" width="800" height="400" style="border: 1px solid #ccc; width: 100%; background: #f8f9fa;"></canvas>
+</div>
+
+<script>
+const canvas = document.getElementById('visitorMap');
+const ctx = canvas.getContext('2d');
+
+// Draw a better world map outline
+function drawWorldMap() {
+    ctx.strokeStyle = '#ccc';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
     
-    <script>
-    const canvas = document.getElementById('visitorMap');
-    const ctx = canvas.getContext('2d');
+    // North America
+    ctx.moveTo(160, 120);
+    ctx.bezierCurveTo(120, 100, 100, 140, 120, 180);
+    ctx.bezierCurveTo(150, 220, 180, 220, 200, 180);
     
-    // Initialize map with basic continents outline
-    function initMap() {
-        ctx.fillStyle = '#f0f0f0';  // Light gray background
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Simple continent outlines (very basic representation)
-        ctx.fillStyle = '#e0e0e0';  // Slightly darker gray for continents
-        
-        // North America
-        ctx.fillRect(50, 40, 80, 40);
-        
-        // South America
-        ctx.fillRect(90, 80, 40, 50);
-        
-        // Europe
-        ctx.fillRect(150, 40, 40, 30);
-        
-        // Africa
-        ctx.fillRect(150, 70, 50, 50);
-        
-        // Asia
-        ctx.fillRect(200, 30, 100, 60);
-        
-        // Australia
-        ctx.fillRect(250, 100, 40, 30);
-    }
+    // South America
+    ctx.moveTo(220, 200);
+    ctx.bezierCurveTo(200, 250, 220, 300, 250, 320);
     
-    // Add visitor point with animation
-    function addVisitor(lat, lon) {
-        const x = Math.floor((lon + 180) * (canvas.width / 360));
-        const y = Math.floor((90 - lat) * (canvas.height / 180));
-        
-        ctx.fillStyle = 'rgba(75, 156, 211, 0.8)'; // UNC blue
-        ctx.beginPath();
-        ctx.arc(x, y, 3, 0, 2 * Math.PI);
-        ctx.fill();
-        
-        // Add glow effect
-        ctx.beginPath();
-        ctx.arc(x, y, 5, 0, 2 * Math.PI);
-        ctx.strokeStyle = 'rgba(75, 156, 211, 0.4)';
-        ctx.stroke();
-    }
+    // Europe
+    ctx.moveTo(380, 120);
+    ctx.bezierCurveTo(400, 100, 420, 100, 440, 120);
     
-    // Initialize map
-    initMap();
+    // Africa
+    ctx.moveTo(400, 160);
+    ctx.bezierCurveTo(380, 200, 400, 260, 440, 280);
     
-    // Add some test visitors (remove this in production)
-    const testVisitors = [
-        { lat: 39, lon: 121 },  // Dalian
-        { lat: 40.7128, lon: -74.0060 },  // New York
-        { lat: 51.5074, lon: -0.1278 },   // London
-        { lat: 35.6762, lon: 139.6503 },  // Tokyo
-    ];
+    // Asia
+    ctx.moveTo(440, 120);
+    ctx.bezierCurveTo(500, 100, 550, 120, 600, 140);
+    ctx.bezierCurveTo(620, 160, 620, 200, 600, 220);
     
-    testVisitors.forEach(visitor => {
-        addVisitor(visitor.lat, visitor.lon);
+    // Australia
+    ctx.moveTo(600, 250);
+    ctx.bezierCurveTo(620, 260, 640, 280, 620, 300);
+    
+    ctx.stroke();
+}
+
+function addVisitor(lat, lon) {
+    const x = Math.floor((lon + 180) * (canvas.width / 360));
+    const y = Math.floor((90 - lat) * (canvas.height / 180));
+    
+    // Glowing effect
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, 8);
+    gradient.addColorStop(0, 'rgba(75, 156, 211, 0.8)');
+    gradient.addColorStop(1, 'rgba(75, 156, 211, 0)');
+    
+    ctx.beginPath();
+    ctx.arc(x, y, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+    
+    // Center dot
+    ctx.beginPath();
+    ctx.arc(x, y, 2, 0, 2 * Math.PI);
+    ctx.fillStyle = '#4B9CD3';
+    ctx.fill();
+}
+
+// Initialize
+ctx.fillStyle = '#f8f9fa';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+drawWorldMap();
+
+// Test data (for demonstration)
+const testLocations = [
+    { lat: 39, lon: 121 },    // Dalian
+    { lat: 40.7, lon: -74 },  // New York
+    { lat: 51.5, lon: -0.12 }, // London
+    { lat: 35.6, lon: 139.6 }, // Tokyo
+];
+
+testLocations.forEach(loc => addVisitor(loc.lat, loc.lon));
+
+// Get real visitor location
+fetch('https://api.ipapi.com/check')
+    .then(response => response.json())
+    .then(data => {
+        if (data.latitude && data.longitude) {
+            addVisitor(data.latitude, data.longitude);
+            const visits = JSON.parse(localStorage.getItem('visits') || '[]');
+            visits.push({
+                lat: data.latitude,
+                lon: data.longitude,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('visits', JSON.stringify(visits));
+        }
+    })
+    .catch(() => {
+        // Fallback to Dalian if IP lookup fails
+        addVisitor(39, 121);
     });
-    
-    // Get real visitor's location
-    fetch('https://api.ipapi.com/check')
-        .then(response => response.json())
-        .then(data => {
-            if (data.latitude && data.longitude) {
-                addVisitor(data.latitude, data.longitude);
-                // Store visit
-                const visits = JSON.parse(localStorage.getItem('visits') || '[]');
-                visits.push({
-                    lat: data.latitude, 
-                    lon: data.longitude, 
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('visits', JSON.stringify(visits));
-            }
-        })
-        .catch(error => {
-            console.log('Error fetching location:', error);
-            // Fallback: Add a point at Dalian
-            addVisitor(39, 121);
-        });
-    
-    // Load and display previous visits
-    const visits = JSON.parse(localStorage.getItem('visits') || '[]');
-    visits.forEach(visit => addVisitor(visit.lat, visit.lon));
-    </script>
+
+// Load previous visits
+const visits = JSON.parse(localStorage.getItem('visits') || '[]');
+visits.forEach(visit => addVisitor(visit.lat, visit.lon));
+</script>
 
     
     <div class="footer">
