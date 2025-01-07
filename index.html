@@ -378,59 +378,99 @@
     }
     </script>
 
-    <!-- Add this new section before the footer div -->
     <div class="content-section" id="visitors">
-        <h2>Global Visitors</h2>
-        <canvas id="visitorMap" width="360" height="180"></canvas>
+    <h2>Global Visitors</h2>
+    <canvas id="visitorMap" width="360" height="180" style="border: 1px solid #ccc; width: 100%; max-width: 800px;"></canvas>
     </div>
     
-    <!-- Add this before the closing body tag -->
     <script>
-    // Simple world map visualization
     const canvas = document.getElementById('visitorMap');
     const ctx = canvas.getContext('2d');
     
-    // Initialize empty map
+    // Initialize map with basic continents outline
     function initMap() {
-        ctx.fillStyle = '#eee';
+        ctx.fillStyle = '#f0f0f0';  // Light gray background
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Simple continent outlines (very basic representation)
+        ctx.fillStyle = '#e0e0e0';  // Slightly darker gray for continents
+        
+        // North America
+        ctx.fillRect(50, 40, 80, 40);
+        
+        // South America
+        ctx.fillRect(90, 80, 40, 50);
+        
+        // Europe
+        ctx.fillRect(150, 40, 40, 30);
+        
+        // Africa
+        ctx.fillRect(150, 70, 50, 50);
+        
+        // Asia
+        ctx.fillRect(200, 30, 100, 60);
+        
+        // Australia
+        ctx.fillRect(250, 100, 40, 30);
     }
     
-    // Add visitor point
+    // Add visitor point with animation
     function addVisitor(lat, lon) {
-        // Convert lat/lon to canvas coordinates
         const x = Math.floor((lon + 180) * (canvas.width / 360));
         const y = Math.floor((90 - lat) * (canvas.height / 180));
         
-        ctx.fillStyle = 'rgba(75, 156, 211, 0.8)'; // Using your UNC blue
+        ctx.fillStyle = 'rgba(75, 156, 211, 0.8)'; // UNC blue
         ctx.beginPath();
-        ctx.arc(x, y, 2, 0, 2 * Math.PI);
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
         ctx.fill();
+        
+        // Add glow effect
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'rgba(75, 156, 211, 0.4)';
+        ctx.stroke();
     }
     
     // Initialize map
     initMap();
     
-    // Get visitor's location from IP
-    fetch('https://api.ipapi.com/api/check?access_key=YOUR_API_KEY')
+    // Add some test visitors (remove this in production)
+    const testVisitors = [
+        { lat: 39, lon: 121 },  // Dalian
+        { lat: 40.7128, lon: -74.0060 },  // New York
+        { lat: 51.5074, lon: -0.1278 },   // London
+        { lat: 35.6762, lon: 139.6503 },  // Tokyo
+    ];
+    
+    testVisitors.forEach(visitor => {
+        addVisitor(visitor.lat, visitor.lon);
+    });
+    
+    // Get real visitor's location
+    fetch('https://api.ipapi.com/check')
         .then(response => response.json())
         .then(data => {
-            addVisitor(data.latitude, data.longitude);
-            // Store visit in localStorage or your backend
-            storeVisit(data.latitude, data.longitude);
+            if (data.latitude && data.longitude) {
+                addVisitor(data.latitude, data.longitude);
+                // Store visit
+                const visits = JSON.parse(localStorage.getItem('visits') || '[]');
+                visits.push({
+                    lat: data.latitude, 
+                    lon: data.longitude, 
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('visits', JSON.stringify(visits));
+            }
         })
-        .catch(error => console.log('Error fetching location:', error));
+        .catch(error => {
+            console.log('Error fetching location:', error);
+            // Fallback: Add a point at Dalian
+            addVisitor(39, 121);
+        });
     
-    // Function to store visit (you'll need to implement this with your backend)
-    function storeVisit(lat, lon) {
-        // Simple localStorage example
-        const visits = JSON.parse(localStorage.getItem('visits') || '[]');
-        visits.push({lat, lon, timestamp: new Date().toISOString()});
-        localStorage.setItem('visits', JSON.stringify(visits));
-        
-        // Render all previous visits
-        visits.forEach(visit => addVisitor(visit.lat, visit.lon));
-    }
+    // Load and display previous visits
+    const visits = JSON.parse(localStorage.getItem('visits') || '[]');
+    visits.forEach(visit => addVisitor(visit.lat, visit.lon));
     </script>
 
     
