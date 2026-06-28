@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="SLIM Lab - Science behind Lightweight Innovations for Maritime applications" />
+    <meta name="description" content="SLIM Lab - Sustainable Lightweighting Innovations for Maritime" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -14,6 +14,14 @@
             --nature-magenta: #CC0066;
             --nature-blue: #0072B2;
             --nature-purple: #663399;
+            --dark: #1f2a36;
+            --pixel-shadow: 4px 4px 0 rgba(75, 156, 211, 0.18);
+            --pixel-shadow-strong: 6px 6px 0 rgba(31, 42, 54, 0.14);
+            --pixel-border: 3px solid var(--unc-blue);
+        }
+
+        * {
+            box-sizing: border-box;
         }
         
         html {
@@ -26,17 +34,52 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 90px;
             color: #333;
             background-color: var(--light-blue);
+            background-image:
+                linear-gradient(rgba(75, 156, 211, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(75, 156, 211, 0.05) 1px, transparent 1px);
+            background-size: 16px 16px;
+            image-rendering: pixelated;
         }
 
         .header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 24px;
             background-color: var(--white);
-            border-radius: 8px;
+            border: var(--pixel-border);
+            border-radius: 0;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
+            box-shadow: var(--pixel-shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before,
+        .header::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--unc-blue);
+        }
+
+        .header::before {
+            top: 12px;
+            left: 12px;
+            box-shadow:
+                22px 0 0 var(--light-blue),
+                0 22px 0 var(--light-blue);
+        }
+
+        .header::after {
+            right: 12px;
+            bottom: 12px;
+            background: var(--nature-yellow);
+            box-shadow:
+                -22px 0 0 var(--light-blue),
+                0 -22px 0 var(--light-blue);
         }
 
         .lab-title {
@@ -47,11 +90,13 @@
             margin: 15px 0;
             color: var(--unc-blue);
             text-transform: uppercase;
+            text-shadow: 3px 3px 0 rgba(75, 156, 211, 0.18);
         }
 
         .lab-subtitle {
             font-size: 1.2em;
             line-height: 1.5;
+            margin-bottom: 10px;
         }
 
         .highlight-s { color: var(--nature-yellow); font-weight: 700; }
@@ -66,59 +111,69 @@
             right: 0;
             z-index: 100;
             background: var(--unc-blue);
-            padding: 15px 0;
+            padding: 14px 0;
             margin-bottom: 30px;
             border-radius: 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(75, 156, 211, 0.2);
+            box-shadow: 0 4px 0 rgba(31, 42, 54, 0.18);
+            border-bottom: 3px solid var(--dark);
             transition: transform 0.3s ease;
         }
 
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: var(--unc-blue);
+            border: 2px solid var(--white);
             color: white;
-            font-size: 1.5em;
+            font-size: 1.1em;
             cursor: pointer;
-            padding: 10px;
+            padding: 6px 10px;
             position: absolute;
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
+            border-radius: 0;
+            box-shadow: 3px 3px 0 rgba(31, 42, 54, 0.2);
         }
 
         .nav-menu a {
             color: var(--white);
             text-decoration: none;
-            margin: 0 20px;
-            padding: 5px 10px;
-            transition: all 0.3s ease;
+            margin: 0 14px;
+            padding: 7px 12px;
+            transition: all 0.2s ease;
             display: inline-block;
             font-family: 'Orbitron', monospace;
             font-size: 0.9em;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-menu a:hover {
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.16);
+            border-radius: 0;
+            border-color: rgba(255,255,255,0.45);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 rgba(31, 42, 54, 0.2);
         }
 
         .content-section {
             margin-bottom: 40px;
             background: var(--white);
             padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
-            transition: transform 0.3s ease;
+            border: var(--pixel-border);
+            border-radius: 0;
+            box-shadow: var(--pixel-shadow);
+            transition: transform 0.2s ease;
             position: relative;
             overflow: hidden;
             animation: fadeIn 0.5s ease-in;
         }
 
         .content-section:hover {
-            transform: translateY(-2px);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 rgba(75, 156, 211, 0.2);
         }
 
         .content-section::after {
@@ -127,10 +182,10 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--unc-blue), #2c3e50);
+            height: 6px;
+            background: linear-gradient(90deg, var(--unc-blue), var(--nature-blue), var(--nature-purple));
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.25s ease;
             transform-origin: left;
         }
 
@@ -148,9 +203,16 @@
         h2 {
             font-family: 'Orbitron', sans-serif;
             color: var(--unc-blue);
-            border-bottom: 2px solid var(--unc-blue);
+            border-bottom: 3px solid var(--unc-blue);
             padding-bottom: 10px;
             margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .research-interests {
@@ -165,12 +227,15 @@
             margin-bottom: 30px;
             padding: 15px;
             background: rgba(75, 156, 211, 0.05);
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            border: 2px solid rgba(75, 156, 211, 0.2);
+            border-radius: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 4px 4px 0 rgba(75, 156, 211, 0.08);
         }
 
         .research-item:hover {
-            transform: translateY(-5px);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 rgba(75, 156, 211, 0.12);
         }
 
         .research-text {
@@ -181,7 +246,7 @@
         .research-text h3 {
             margin: 0 0 10px 0;
             color: var(--unc-blue);
-            font-size: 1.2em;
+            font-size: 1.05em;
         }
 
         .research-text p {
@@ -192,13 +257,15 @@
             width: 300px;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.2);
-            transition: transform 0.3s ease;
+            border-radius: 0;
+            border: 3px solid var(--unc-blue);
+            box-shadow: 4px 4px 0 rgba(31, 42, 54, 0.14);
+            transition: transform 0.2s ease;
+            image-rendering: pixelated;
         }
 
         .research-item img:hover {
-            transform: scale(1.05);
+            transform: translate(-2px, -2px);
         }
 
         .publication-list li {
@@ -212,18 +279,43 @@
             padding: 20px;
             background-color: var(--white);
             margin-top: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(75, 156, 211, 0.1);
+            border: var(--pixel-border);
+            border-radius: 0;
+            box-shadow: var(--pixel-shadow);
         }
 
         a {
             color: var(--unc-blue);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
 
         a:hover {
             color: #2c3e50;
+        }
+
+        button {
+            font-family: 'Orbitron', sans-serif;
+            background: var(--unc-blue);
+            color: var(--white);
+            border: 3px solid var(--dark);
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0;
+            box-shadow: 4px 4px 0 rgba(31, 42, 54, 0.16);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 rgba(31, 42, 54, 0.18);
+        }
+
+        button:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0 rgba(31, 42, 54, 0.18);
         }
 
         @keyframes fadeIn {
@@ -251,13 +343,13 @@
 
             .nav-menu a {
                 display: block;
-                margin: 5px 0;
-                padding: 8px 0;
+                margin: 5px 12px;
+                padding: 10px 0;
             }
 
             body {
                 padding: 10px;
-                padding-top: 60px;
+                padding-top: 70px;
             }
 
             .content-section {
@@ -293,10 +385,10 @@
     <div class="header">
         <div class="lab-title">SLIM LAB</div>
         <p class="lab-subtitle">
-            <span class="highlight-s">S</span>ciences behind 
-            <span class="highlight-l">L</span>ightweight 
-            <span class="highlight-i">I</span>nnovations for 
-            <span class="highlight-m">M</span>arine applications Laboratory
+            <span class="highlight-s">S</span>ustainable
+            <span class="highlight-l">L</span>ightweighting
+            <span class="highlight-i">I</span>nnovations for
+            <span class="highlight-m">M</span>aritime
         </p>
         <p>Dalian Maritime University ⚓️ | Dalian, China [39°N,121°E]</p>
     </div>
@@ -314,7 +406,7 @@
 
     <div class="content-section" id="about">
         <h2>About Us</h2>
-        <p>Welcome to the SLIM Lab at Dalian Maritime University. We focus on advancing the science of lightweight materials and innovative manufacturing techniques for maritime applications. Our research combines cutting-edge technology with practical maritime industry needs.</p>
+        <p>Welcome to the SLIM Lab at Dalian Maritime University. We focus on advancing sustainable lightweighting innovations and innovative manufacturing techniques for maritime applications. Our research combines cutting-edge technology with practical maritime industry needs.</p>
     </div>
 
     <div class="content-section" id="research">
@@ -370,17 +462,11 @@
 
     <script>
     function showPublications() {
-      // Generate the Google Scholar search URL
       const searchUrl = `https://scholar.google.com/scholar?q=zhaogui+wang+dalian+maritime+university&hl=en&as_sdt=1,5&as_vis=1&oi=scholart`;
-    
-      // Open the search results in a new window
       window.open(searchUrl, '_blank');
     }
     </script>
 
-   
-
-    
     <div class="footer">
         <p>More updates coming soon!</p>
         <p>© 2024 SLIM Lab - Dalian Maritime University</p>
