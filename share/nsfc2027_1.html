@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2027年面上项目申请书 · 逻辑导图</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    background:#f5f6f8; padding:40px 20px; color:#243447;
+  }
+  .container { max-width:1080px; margin:0 auto; }
+  h1 {
+    text-align:center; font-size:20px; letter-spacing:1px;
+    color:#102a43; margin-bottom:6px;
+  }
+  .subtitle {
+    text-align:center; font-size:13px; color:#7b8794;
+    margin-bottom:32px;
+  }
+  .tree ul { list-style:none; padding-left:26px; position:relative; }
+  .tree > ul { padding-left:0; }
+  .tree li { position:relative; padding:5px 0 5px 22px; }
+  .tree li::before {
+    content:""; position:absolute; left:0; top:0; bottom:0;
+    border-left:2px solid #cbd2d9;
+  }
+  .tree li:last-child::before { bottom:50%; }
+  .tree li::after {
+    content:""; position:absolute; left:0; top:50%;
+    width:18px; border-top:2px solid #cbd2d9;
+  }
+  .tree > ul > li::before,
+  .tree > ul > li::after { display:none; }
+  .tree > ul > li { padding-left:0; }
+
+  .node {
+    display:inline-block; padding:7px 15px; border-radius:6px;
+    font-size:14px; line-height:1.55; max-width:800px;
+  }
+  .level-0 {
+    background:#102a43; color:#fff; font-size:15px; font-weight:600;
+    padding:12px 22px; letter-spacing:0.5px;
+  }
+  .level-1 {
+    background:#334e68; color:#fff; font-weight:600; letter-spacing:0.3px;
+  }
+  .level-2 {
+    background:#e6ecf2; border-left:4px solid #486581;
+    font-weight:600; color:#243447;
+  }
+  .level-3 {
+    background:#ffffff; border:1px solid #d9e2ec; color:#334e68;
+  }
+  .level-3.key {
+    border-left:4px solid #bf5b3d; background:#fdf6f2;
+    color:#7a3520; font-weight:500;
+  }
+  .level-3.anchor {
+    border-left:4px solid #2f6f4f; background:#f2f8f4;
+    color:#1f4a35; font-weight:500;
+  }
+  .chain {
+    background:#fff8e1; border-left:4px solid #c99a2e;
+    color:#5c4410; font-weight:600; max-width:880px;
+  }
+  .badge {
+    display:inline-block; font-size:11px; padding:1px 8px;
+    border-radius:10px; margin-right:8px; vertical-align:middle;
+    color:#fff; font-weight:500;
+  }
+  .b-need  { background:#486581; }
+  .b-gap   { background:#bf5b3d; }
+  .b-question { background:#2f6f4f; }
+  .b-task  { background:#7b5ea7; }
+  .b-limit { background:#8a8f98; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>2027年面上项目申请书 · 逻辑导图</h1>
+<p class="subtitle">规范要求 → 前提失效 → 知识断层 → 科学问题 → 研究内容 → 指标与边界</p>
+
+<div class="tree">
+<ul>
+  <li>
+    <span class="node level-0">从船舶建造规范的“均匀性前提”出发，揭示大尺寸熔融挤出复合材料层间融合与厚度方向性能的空间一致性形成机制</span>
+    <ul>
+
+      <!-- 一、工程需求 -->
+      <li>
+        <span class="node level-1"><span class="badge b-need">一</span>工程需求：规范要求什么，LFAM为什么做不到</span>
+        <ul>
+          <li>
+            <span class="node level-2">工程对象</span>
+            <ul>
+              <li><span class="node level-3">5–20 m 国内航行小型海船 / 内河小型船舶</span></li>
+              <li><span class="node level-3">上层建筑或甲板室复合材料曲面壁板段（含局部几何变化或开口区域）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">规范锚点</span>
+            <ul>
+              <li><span class="node level-3">层间剪切强度作为船级社体系中层合结构层间结合的验收语言</span></li>
+              <li><span class="node level-3">传统验收逻辑：工艺试板证明 → 推定构件各处不低于试板水平</span></li>
+              <li><span class="node level-3 key">隐含前提：工艺足够均匀，试板能代表构件最不利状态</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">LFAM 打破前提</span>
+            <ul>
+              <li><span class="node level-3">同一壁板内，曲率、厚度变化、沉积路径造成非稳态热历史</span></li>
+              <li><span class="node level-3">层间融合状态空间不均匀 → 试板合格 ≠ 构件最薄弱处合格</span></li>
+              <li><span class="node level-3">厚度方向性能断崖：显著低于平面方向，失效以层间剥离、界面开裂为主</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">知识断层</span>
+            <ul>
+              <li><span class="node level-3">热历史研究多针对平板/均匀路径，评价平均强度而非空间离散性</span></li>
+              <li><span class="node level-3">各向异性研究聚焦平面方向模量，未将局部热历史作为界面树脂层状态和链扩散的自变量</span></li>
+              <li><span class="node level-3 key">汇合点：非稳态热历史 × 纤维取向 → 共同制造空间非均匀的厚度方向融合状态</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!-- 二、科学问题 -->
+      <li>
+        <span class="node level-1"><span class="badge b-question">二</span>科学问题：两个递进问题</span>
+        <ul>
+          <li>
+            <span class="node level-2">问题一：形成机制</span>
+            <ul>
+              <li><span class="node level-3">非稳态热历史与纤维取向耦合作用下，层间融合及厚度方向性能如何形成？</span></li>
+              <li><span class="node level-3">核心：粘弹性松弛、界面互扩散、结构冻结的竞争；纤维取向通过界面树脂富集层构成几何约束</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">问题二：空间转化</span>
+            <ul>
+              <li><span class="node level-3">层间融合状态如何转化为标准制件层间性能的空间差异？</span></li>
+              <li><span class="node level-3">核心：局部热历史差异 → 融合状态不均匀 → 层间剪切强度与厚度方向强度的空间分布与离散性</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!-- 三、研究内容 -->
+      <li>
+        <span class="node level-1"><span class="badge b-task">三</span>研究内容：四项递进</span>
+        <ul>
+          <li>
+            <span class="node level-2">内容一：制造过程基础</span>
+            <ul>
+              <li><span class="node level-3">机械臂辅助大尺寸熔融挤出非稳态沉积热历史的形成与表征</span></li>
+              <li><span class="node level-3">纤维取向与界面结构的局部分布特征</span></li>
+              <li><span class="node level-3 anchor">输出：局部热历史 + 纤维取向 + 界面结构的基础数据</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">内容二：核心机制</span>
+            <ul>
+              <li><span class="node level-3">热历史驱动的粘弹性松弛与界面互扩散</span></li>
+              <li><span class="node level-3">纤维取向对界面树脂富集层形成及其结构特征的影响</span></li>
+              <li><span class="node level-3 key">约化时间作为待检验假设：能否归一化不同热历史下的层间剪切与厚度方向强度数据</span></li>
+              <li><span class="node level-3 anchor">输出：层间融合状态判据及其与两项核心力学指标的定量关系</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">内容三：调控与检验</span>
+            <ul>
+              <li><span class="node level-3">退火作为独立热历史路径，检验机制模型的预测能力</span></li>
+              <li><span class="node level-3">退火对层间性能及其空间均匀性的影响边界</span></li>
+              <li><span class="node level-3 anchor">输出：机制检验结果与调控边界（不写成工艺优化）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">内容四：质量验证</span>
+            <ul>
+              <li><span class="node level-3">标准制件的空间取样设计由船用壁板沉积路径与规范局部载荷分区驱动</span></li>
+              <li><span class="node level-3">预测不同区域的融合状态、层间剪切强度与厚度方向强度分布</span></li>
+              <li><span class="node level-3">识别低性能区域，检验预测命中情况与误差范围</span></li>
+              <li><span class="node level-3">在单一典型船用曲面构件上开展局部验证</span></li>
+              <li><span class="node level-3 anchor">输出：标准制件性能评价方法与分布预测方法（不承诺统计保证值下界）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!-- 四、指标与边界 -->
+      <li>
+        <span class="node level-1"><span class="badge b-limit">四</span>关键指标与必须守住的边界</span>
+        <ul>
+          <li>
+            <span class="node level-2">核心评价指标</span>
+            <ul>
+              <li><span class="node level-3">层间剪切强度（对接船级社验收语言）</span></li>
+              <li><span class="node level-3">厚度方向拉伸强度（界面法向张开承载）</span></li>
+              <li><span class="node level-3">性能变异系数（衡量空间均匀性）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node level-2">必须守住的边界</span>
+            <ul>
+              <li><span class="node level-3 key">约化时间写成待检验假设，不写成既定标度</span></li>
+              <li><span class="node level-3 key">标准制件取样必须由船用壁板特征驱动，不做通用平板</span></li>
+              <li><span class="node level-3 key">不承诺“构件满足某统计下界”，只承诺预测命中与误差评估</span></li>
+              <li><span class="node level-3">退火只作为机制检验手段，不写成独立工艺优化</span></li>
+              <li><span class="node level-3">不碰整船设计、长期耐久性、完整可制造性设计平台</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <!-- 五、一句话逻辑链 -->
+      <li>
+        <span class="node level-1"><span class="badge b-gap">五</span>一句话逻辑链</span>
+        <ul>
+          <li>
+            <span class="node level-3 chain">小船规范要求层间性能“处处不低于试板” → 大尺寸熔融挤出的非稳态热历史打破均匀性前提 → 热历史与纤维取向耦合制造厚度方向融合状态的空间不均匀 → 需要建立从局部热历史到局部层间剪切强度与厚度方向强度的可预测关系 → 用标准制件和船用壁板验证预测能力</span>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+</ul>
+</div>
+</div>
+</body>
+</html>
